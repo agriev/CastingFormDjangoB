@@ -22,7 +22,8 @@ from CFMainBackend import views
 
 router = routers.DefaultRouter()
 router.register(r'actors', views.ActorViewSet)
-router.register(r'actorsvideos', views.VideosViewSet)
+router.register(r'actorsvideos', views.ActorVideosViewSet)
+router.register(r'actorsphotos', views.ActorPhotosViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),

@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from .serializers import ActorSerializer,VideoSerializer
+from .serializers import ActorSerializer, ActorVideoSerializer, ActorPhotoSerializer
 from rest_framework import viewsets
-from .models import Actor, ActorVideo
+from .models import Actor, ActorVideo, ActorPhoto
 # Create your views here.
 
 class ActorViewSet(viewsets.ModelViewSet):
@@ -12,6 +12,12 @@ class ActorViewSet(viewsets.ModelViewSet):
     serializer_class = ActorSerializer
     filter_fields = ('name', 'email')
 
-class VideosViewSet(viewsets.ModelViewSet):
+
+class ActorVideosViewSet(viewsets.ModelViewSet):
     queryset = ActorVideo.objects.all()
-    serializer_class = VideoSerializer
+    serializer_class = ActorVideoSerializer
+
+
+class ActorPhotosViewSet(viewsets.ModelViewSet):
+    queryset = ActorPhoto.objects.all()
+    serializer_class = ActorPhotoSerializer

@@ -2,8 +2,15 @@ from CFMainBackend.models import Actor, ActorVideo, ActorPhoto
 from rest_framework import serializers
 
 
+class ActorPhotoSerializer(serializers.HyperlinkedModelSerializer):
+    actor = serializers.ReadOnlyField(source='actor.name')
 
-class VideoSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = ActorPhoto
+        fields = ('file', 'description', 'actor')
+
+
+class ActorVideoSerializer(serializers.HyperlinkedModelSerializer):
     actor = serializers.ReadOnlyField(source='actor.name')
 
     class Meta:
